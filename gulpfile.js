@@ -174,7 +174,7 @@
 
 	// js、css、html压缩处理（可选）
 	// 打包到dist文件夹下
-	gulp.task('dist', ['image', 'rename'], function(){
+	gulp.task('dist', ['image'], function(){
 		return gulp.src('app/*.html')
 			.pipe($.plumber())
 			.pipe($.useref())
@@ -212,12 +212,13 @@
 
 	// gulp-start
 	// 启动项目
-	gulp.task('start', ['watch', 'html', 'sass', 'webpack']);
+	gulp.task('start', ['watch', 'html', 'sass']);
 	// 检查css和js
   	gulp.task('test',  ['jshint', 'scss-lint']);
 	// 默认
-	gulp.task('default', ['html', 'sass', 'rimraf', 'webpack'], function(){
-		gulp.start('rimraf-rev');
+	gulp.task('default', ['html', 'sass', 'rimraf'], function(){
+		console.log(1);
+		gulp.start('dist');
 		
 	});
 })(require('gulp'), require('gulp-load-plugins'));

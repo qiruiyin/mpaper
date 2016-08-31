@@ -1,0 +1,36 @@
+<!-- 头条 -->
+	<section class="active" id="top">
+		<dl>
+			<template v-for="item in items">
+				<dt>{{ item.title }}</dt>
+				<dd>{{ item.content }}</dd>
+			</template>
+		</dl>
+	</section>
+	<!-- 产业 -->
+	<section id="industry">
+		<dl>
+			<template v-for="item in items">
+				<dt>{{ item.title }}</dt>
+				<dd>{{ item.content }}</dd>
+			</template>
+		</dl>
+	</section>
+	<!-- 全球 -->
+	<section id="world">
+		<dl>
+			<template v-for="item in items">
+				<dt>{{ item.title }}</dt>
+				<dd>{{ item.content }}</dd>
+			</template>
+		</dl>
+	</section>
+	<!-- 资本 -->
+	<section id="capital">
+		<dl>
+			<template  v-for="item in items">
+				<dt>{{ item.title }}</dt>
+				<dd>{{ item.content }}</dd>
+			</template>
+		</dl>
+	</section>

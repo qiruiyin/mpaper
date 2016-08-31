@@ -3,11 +3,53 @@
 @import  'core/mixins', 'core/functions', 'core/vars';
 
 header {
-	padding: 20px 0;
-	width: 100%;
-	text-align: center;
-}
+	position: relative;
 
-h1 {
-	color: #3cc51f;
+	.banner {
+		width: 100%;
+	}
+
+	.banner-desc {
+		position: absolute;
+		right: 0;
+		top: 40.33%;
+		width: 64.3%;
+
+		p {
+			font-size: 14px;
+			color: #8d8786;
+			padding-right: 6.3%;
+		}
+
+		article {
+			position: absolute;
+			top: 50px;
+			right: 6.3%;
+			font-size: 14px;
+			color: #8d8786;
+			background: #000000;
+			padding: 10px;
+			padding-right: 6.3%;
+			border-radius: 8px;
+			display: none;
+		}
+
+		&.active {
+			article {
+				display: block;
+			}
+		}
+	}
+
+	.banner-comment {
+		margin-top: 15px;
+		width: 35%;
+		height: 35px;
+		font-size: 14px;
+		line-height: 24px;
+		text-align: center;
+		color: #fff;
+		background: url('../img/banner-title-bg.png') no-repeat;
+		background-size: contain;
+	}
 }

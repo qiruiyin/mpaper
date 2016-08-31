@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
-@@include('./part/head.html')
-<title>首页</title>
-<body>
-<div class="container">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Your title">
+	<meta name="format-detection" content="telephone=no">
+	<title>海棠晨报</title>
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<script src="./pkgs/vue/vue.js"></script>
+	<script src="./pkgs/zepto/zepto.js"></script>
+	<script src="./js/index.js"></script>
+</head>
+<body id="mpaper" v-cloak>
+<div class="banner">
+	<img src="./img/banner.png">
+	<p>{{ banner_info.slide_content }}</p>
 </div>
 
-@@include('./part/footer.html')
-<!-- build:js js/index.js -->
-<script src="./js/index.js"></script>
-<!-- endbuild -->
+<div class="tabs">
+	<nav id="title">
+		<div class="title-name" v-bind:class="{ 'active': $index == iscur }"  v-for="item in titles" v-on:tap="setCur($index, $event)" data-id="{{item.id}}">
+			{{ item.label }}
+		</div>
+	</nav>
+	<section class="content">
+		<dl>
+			<template v-for="item in contents">
+				<dt v-bind:class="{ 'active': $index == isShow }" v-on:click="showMsg($index)">{{ item.post_title }}</dt>
+				<dd>{{ item.post_excerpt }}</dd>
+			</template>
+		</dl>
+	</section>
+</div>
 </body>
 </html>
