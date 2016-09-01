@@ -179,9 +179,7 @@
 			.pipe($.plumber())
 			.pipe($.useref())
 			.pipe($.if('*.js', $.uglify()))
-			.pipe($.if('*.js', $.rev()))
 			.pipe($.if('*.css', $.cssnano()))
-			.pipe($.if('*.css', $.rev()))
 			.pipe(gulp.dest(_.dist));
 	});
 
@@ -212,7 +210,7 @@
 
 	// gulp-start
 	// 启动项目
-	gulp.task('start', ['watch', 'html', 'sass']);
+	gulp.task('start', ['watch', 'html', 'sass', 'webpack']);
 	// 检查css和js
   	gulp.task('test',  ['jshint', 'scss-lint']);
 	// 默认

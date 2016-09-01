@@ -1,9 +1,9 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "./app/js/index.tsx",
+    entry: "./app/js/app.ts",
     output: {
-        filename: "./app/js/app.js",
+        filename: "./app/js/index.js",
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -30,10 +30,10 @@ module.exports = {
     // assume a corresponding global variable exists and use that instead.
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
-    externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
-    },
+    // externals: {
+    //     "react": "React",
+    //     "react-dom": "ReactDOM"
+    // },
     plugins: [
         // 压缩混淆
         new webpack.optimize.UglifyJsPlugin({
