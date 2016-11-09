@@ -24,19 +24,6 @@ body {
         margin: 0 auto;
         display: block;
     }
-
-    p {
-        position: absolute;
-        bottom: 2px;
-        left: 20px;
-        right: 20px;
-        margin: 0 auto;
-        height: 44px;
-        line-height: 1.5;
-        color: #936b62;
-        text-align: justify;
-        overflow: hidden;
-    }
 }
 
 nav {
@@ -60,51 +47,56 @@ nav {
         margin: 0 auto;
         width: 25px;
         height: 20px;
-        background: url("../img/spritesheet.png") no-repeat;
+        background: url("../img/mpaper/spritesheet.png") no-repeat;
         background-position: 0 0;
     }
 
     &:nth-child(2):after {
-        background-image: url("../img/spritesheet.png");
+        background-image: url("../img/mpaper/spritesheet.png");
         background-position: -25px 0;
     }
     &:nth-child(3):after {
-        background-image: url("../img/spritesheet.png");
+        background-image: url("../img/mpaper/spritesheet.png");
         background-position: 0 -20px;
     }
     &:nth-child(4):after {
-        background-image: url("../img/spritesheet.png");
+        background-image: url("../img/mpaper/spritesheet.png");
         background-position: -25px -20px;
     }
 
     &.active {
         color: #fff;
-        background-color: #af936c;
+        background-color: #0094ae;
         &:after {
-            background-image: url("../img/spritesheet.png");
+            background-image: url("../img/mpaper/spritesheet.png");
             background-position: -50px 0;
         }
         &:nth-child(2):after {
-            background-image: url("../img/spritesheet.png");
+            background-image: url("../img/mpaper/spritesheet.png");
             background-position: -50px -20px;
         }
         &:nth-child(3):after {
-            background-image: url("../img/spritesheet.png");
+            background-image: url("../img/mpaper/spritesheet.png");
             background-position: 0 -40px;
         }
         &:nth-child(4):after {
-            background-image: url("../img/spritesheet.png");
+            background-image: url("../img/mpaper/spritesheet.png");
             background-position: -25px -40px;
         }
     }
 }
 
 .content {
-    padding-bottom: 46px;
+    padding-top: 15px;
+    padding-bottom: 26px;
 
     dl {
         position: relative;
         margin: 0 auto;
+
+        &.dth dt {
+            height: auto;
+        }
 
         &:after {
             content: "";
@@ -119,19 +111,18 @@ nav {
 
     dt {
         position: relative;
-        padding: 15px 50px;
-        white-space:nowrap;
-        overflow:hidden;
-        text-overflow:ellipsis;
+        padding: 10px 35px;
+        height: 2em;
+        line-height: 1.25;
 
         &:before {
             content: "";
             position: absolute;
-            top: 16px;
-            left: 30px;
-            width: 16px;
-            height: 16px;
-            background: url("../img/spritesheet.png") no-repeat;
+            top: 12px;
+            left: 12px;
+            width: 12px;
+            height: 12px;
+            background: url("../img/mpaper/spritesheet.png") no-repeat;
             background-position: -50px -40px;
         }
         
@@ -153,10 +144,10 @@ nav {
 
         &.active {
             color: #fff;
-            background-color: #661a00;
+            background-color: #0094ae;
             
             &:before {
-                background-image: url("../img/spritesheet.png");
+                background-image: url("../img/mpaper/spritesheet.png");
                 background-position: -75px 0;
             }
             &:after {
@@ -184,16 +175,23 @@ nav {
     }
     dd {
         margin: 0 auto;
-        padding: 0 50px;
-        background-color: #dcdddd;
+        padding: 0 30px;
+        background-color: #ffe;
         transform-origin: 50% 0%;
         max-height: 0;
+        line-height: 1.5;
         color: #030303;
         transform: scaleY(0);
         animation: slideUp .4s ease-out;
         transition: max-height .6s ease-out;
         display: none;
+        text-align: justify;
     }
+}
+
+.link-more {
+    float: right;
+    margin: 0 20px 20px;
 }
 
 @keyframes slideDown {

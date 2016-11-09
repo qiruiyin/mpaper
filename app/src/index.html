@@ -8,8 +8,8 @@
 	<meta name="apple-mobile-web-app-title" content="Your title">
 	<meta name="format-detection" content="telephone=no">
 	<title>海棠晨报</title>
-	<!-- build:css css/index.css -->
-	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<!-- build:css css/mpaper.css -->
+	<link rel="stylesheet" type="text/css" href="./css/mpaper.css">
     <!-- endbuild -->
 	<script src="./pkgs/vue/vue.min.js"></script>
 	<script src="./pkgs/zepto/zepto.min.js"></script>
@@ -18,9 +18,11 @@
 	<!-- endbuild -->
 </head>
 <body id="mpaper" v-cloak>
+<div id='wx_pic' style='margin:0 auto;display:none;'>
+	<img src='./img/mpaper/cover.jpg'>
+</div>
 <div class="banner">
-	<img src="./img/banner.png">
-	<p>{{ banner_info.slide_content }}</p>
+	<img src="./img/mpaper/banner.png">
 </div>
 
 <div class="tabs">
@@ -30,7 +32,7 @@
 		</div>
 	</nav>
 	<section class="content">
-		<dl>
+		<dl :class="{ 'dth': dth == 1 }">
 			<template v-for="item in contents">
 				<dt v-bind:class="{ 'active': $index == isShow }" v-on:click="showMsg($index)">{{ item.post_title }}</dt>
 				<dd>{{ item.post_excerpt }}</dd>
@@ -38,5 +40,7 @@
 		</dl>
 	</section>
 </div>
+
+<a class="link-more" href="index.html">查看更多资讯</a>
 </body>
 </html>
