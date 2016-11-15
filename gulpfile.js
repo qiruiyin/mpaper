@@ -49,13 +49,12 @@
 	// 制作雪碧图
 	// 单独制作雪碧图
 	gulp.task('sprite', function(){
-		// console.log(gulp.src(_.css + '/*.css'));
-		return gulp.src(_.css + '/*.css')
+		return gulp.src(_.css + '/mpaper.css')
 	      	.pipe($.cssSpriter({
 				// 生成的spriter的位置
-	        	'spriteSheet': _.img + '/spriter.png',
+	        	'spriteSheet': _.img + '/mpaper/spriter.png',
 	        	// 生成样式文件图片引用地址的路径
-	        	'pathToSpriteSheetFromCSS': '../img/spriter.png'
+	        	'pathToSpriteSheetFromCSS': '../img/mpaper/spriter.png'
 			}))
 	});
 
@@ -174,7 +173,7 @@
 
 	// js、css、html压缩处理（可选）
 	// 打包到dist文件夹下
-	gulp.task('dist', ['image'], function(){
+	gulp.task('dist', function(){
 		return gulp.src('app/*.html')
 			.pipe($.plumber())
 			.pipe($.useref())

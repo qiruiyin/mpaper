@@ -11,6 +11,6 @@
         "node_modules"
     ],
     "files": [
-        "./app/js/app.ts"
+        "./app/js/mpaper-details.ts"
     ]
 }

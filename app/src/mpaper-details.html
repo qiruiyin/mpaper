@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Your title">
+	<meta name="format-detection" content="telephone=no">
+	<title>海棠早班车</title>
+	<!-- build:css css/mpaper.css -->
+	<link rel="stylesheet" type="text/css" href="./css/mpaper.css">
+    <!-- endbuild -->
+</head>
+<body id="details" v-cloak>
+
+<header>
+	<h1>
+		<img src="./img/mpaper/logo.png">
+	</h1>
+
+	<h2>{{ msg }}</h2>
+</header>
+
+<main>
+	<section class="content">
+		<dl>
+			<template v-for="item in lists">
+				<dt v-bind:class="{ 'active': $index == isShow }" v-on:click="showMsg($index)">{{ item.post_title }}</dt>
+				<dd>{{ item.post_excerpt }}</dd>
+			</template>
+		</dl>
+		<div class="link-more">
+			<a href="mpaper.html">返回</a>		
+			<a href="index.html">查看更多资讯</a>
+		</div>
+	</section>
+</main>
+
+
+<script src="./pkgs/vue/vue.min.js"></script>
+<script src="./pkgs/zepto/zepto.min.js"></script>
+<!-- build:js js/mpaper-details.js -->
+<script src="./js/mpaper-details.js"></script>
+<!-- endbuild -->
+</body>
+</html>

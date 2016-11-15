@@ -2,93 +2,276 @@
 @import  'sandal/core';
 @import  'core/mixins', 'core/functions', 'core/vars';
 
-$padding: 20px;
+$maxW: 414px;
+$menusW: 80px;
+$menusH: $menusW;
+$padding: 15px;
 
 [v-cloak] {
-    display: none;
+	display: none;
 }
 
-body {
-    font: 14px "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    color: #333;
+div, ul, a, li, header, h1, img {
+	box-sizing: border-box;
 }
 
-.banner {
-    position: relative;
+a {
+    outline:none;
+	&:hover, &:active, &:focus, &:visited, &:-webkit-any-link  {
+		color: inherit;
+		text-decoration: none;
+        outline:none;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color:transparent;
+	} 
+}
+
+html, body {
+	margin: 0 auto;
+	font-size: 14px;
+}
+
+ul, li {
+	padding-left: 0;
+	margin: 0 auto;
+	list-style: none;
+}
+
+#index {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	max-width: $maxW;
+	margin: 0 auto;
+	background-color: #20afe1;
+}
+
+.container {
+    position: absolute;
+    top: 0px;
     width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: url("../img/mpaper/bg.png") no-repeat;
+    background-position: 0 0px;
+    background-size: 100%;
+}
+
+.mpaper-logo {
+	width: 128px;
+	height: 31px;
+	margin-top: 20px;
+	margin-left: 20px;
+	background: url("../img/mpaper/logo.png") no-repeat;
+	background-size: 100%;
+	display: block;
+}
+
+.mpaper-menu {
+	position: absolute;
+	top: 77px;
+	left: - 52%;
+	width: 100% * 1.1875;
+	margin: 0 auto;
+	border-radius: 360px;
+	transform: rotate(-180deg);
+	transition: 1s;
+
+	&.active {
+		transform: rotate(0);
+	}
+
+	li {
+		position: absolute;
+		width: $menusW;
+		height: $menusH;
+		background-color: #ed9d25;
+		border-radius: $menusW/2;
+		border: 2px solid #fff;
+		color: #fff;
+		text-align: center;
+		margin-top: -$menusW/2;
+		margin-left: -$menusW/2;
+		
+		a {
+			width: 100%;
+			height: 100%;
+			padding-top: 42px;
+			display: block;
+		}
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 12px;
+			left: 0;
+			right: 0;
+			width: 35px;
+			height: 30px;
+			margin: 0 auto;
+			background: url(../img/mpaper/spriter.png) no-repeat;
+            background-position: 0px 0px;
+		}
+		// 计算公式为left: 50% + abs(sin(20+$i*40))/2; top: 50% - cos(20+$i*40)/2;
+		// 由于sass @for和三角函数不是很熟，暂时这样写
+		&:nth-child(1) {
+			left: 80%;
+			top: 10%;
+
+			&:before {
+                background-image: url(../img/mpaper/spriter.png);
+                background-position: 0px 0px;
+                width: 35px;
+                height: 30px; 
+			}
+		}
+
+		&:nth-child(2) {
+			left: 97%;
+			top: 35%;
+
+			&:before {
+                background-image: url(../img/mpaper/spriter.png);
+                background-position: -35px 0px;
+                width: 35px;
+                height: 30px;
+			}
+		}
+
+		&:nth-child(3) {
+			left: 97%;
+			top: 65%;
+
+			&:before {
+                background-image: url(../img/mpaper/spriter.png);
+                background-position: 0px -30px;
+                width: 35px;
+                height: 30px;
+			}
+		}
+
+		&:nth-child(4) {
+			left: 80%;
+			top: 90%;
+
+			&:before {
+                background-image: url(../img/mpaper/spriter.png);
+                background-position: -35px -30px;
+                width: 35px;
+                height: 30px;
+			}
+		}
+	}
+}
+
+.mpaper-news {
+	position: absolute;
+    bottom: 0px;
+	width: 100%;
+    max-width: $maxW;
+    height: 40px;
+    background: url(../img/mpaper/footer.png) repeat;
     
-    img {
+    & > div {
+        position: fixed;
+        bottom: 0;
         width: 100%;
-        margin: 0 auto;
-        display: block;
-    }
-}
-
-nav {
-    display: flex;
-}
-
-.title-name {
-    position: relative;
-    flex: 1;
-    line-height: 44px;
-    text-align: center;
-    padding-top: 24px;
-    font-size: 16px;
-
-    &:after {
-        content: "";
-        position: absolute;
-        top: 12px;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        width: 25px;
-        height: 20px;
-        background: url("../img/mpaper/spritesheet.png") no-repeat;
-        background-position: 0 0;
+        height: 40px;
+        max-width: $maxW;
     }
 
-    &:nth-child(2):after {
-        background-image: url("../img/mpaper/spritesheet.png");
-        background-position: -25px 0;
-    }
-    &:nth-child(3):after {
-        background-image: url("../img/mpaper/spritesheet.png");
-        background-position: 0 -20px;
-    }
-    &:nth-child(4):after {
-        background-image: url("../img/mpaper/spritesheet.png");
-        background-position: -25px -20px;
-    }
+    .swiper-slide {
+        overflow: hidden;
+        text-align: left;
+        padding-left: 50px;
+        line-height: 40px;
+        overflow: hidden; /*自动隐藏文字*/
+        text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+        white-space: nowrap;/*强制不换行*/
 
-    &.active {
-        color: #fff;
-        background-color: #0094ae;
         &:after {
-            background-image: url("../img/mpaper/spritesheet.png");
-            background-position: -50px 0;
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 18px;
+            width: 35px;
+            height: 30px;
+            background: url(../img/mpaper/spriter.png) center no-repeat;
+            background-position: -70px 0px;
+            width: 21px;
+            height: 18px;
         }
-        &:nth-child(2):after {
-            background-image: url("../img/mpaper/spritesheet.png");
-            background-position: -50px -20px;
+
+        &:nth-child(4n) {
+            &:after {
+                background-image: url(../img/mpaper/spriter.png);
+                background-position: -70px 0px;
+                width: 21px;
+                height: 18px;
+            }
         }
-        &:nth-child(3):after {
-            background-image: url("../img/mpaper/spritesheet.png");
-            background-position: 0 -40px;
+        &:nth-child(4n+1) {
+            &:after {
+                background-image: url(../img/mpaper/spriter.png);
+                background-position: -70px -18px;
+                width: 21px;
+                height: 18px;
+            }
         }
-        &:nth-child(4):after {
-            background-image: url("../img/mpaper/spritesheet.png");
-            background-position: -25px -40px;
+        &:nth-child(4n+2) {
+            &:after {
+                background-image: url(../img/mpaper/spriter.png);
+                background-position: -70px -36px;
+                width: 21px;
+                height: 18px;
+            }
         }
+        &:nth-child(4n+3) {
+            &:after {
+                background-image: url(../img/mpaper/spriter.png);
+                background-position: 0px -60px;
+                width: 21px;
+                height: 18px;
+            }
+        }
+    }
+	
+}
+
+// 详情
+#details {
+    background: #e2e2e2;
+}
+header {
+    width: 100%;
+    height: 50px;
+    background: #296297;
+    padding: 0 $padding;
+    h1 {
+        float: left;
+        margin: 0 auto;
+        height: 100%;
+    }
+
+    img {
+        height: 100%;
+        padding: 10px 0;
+    }
+
+    h2 {
+        float: right;
+        color: #fff;
     }
 }
 
+main {
+    padding: $padding;
+}
 .content {
-    padding-top: 15px;
-    padding-bottom: 26px;
+    background: #fff;
+    @extend %clearfix;
 
     dl {
         position: relative;
@@ -114,16 +297,17 @@ nav {
         padding: 10px 35px;
         height: 2em;
         line-height: 1.25;
+        overflow: hidden;
 
         &:before {
             content: "";
             position: absolute;
             top: 12px;
             left: 12px;
-            width: 12px;
-            height: 12px;
-            background: url("../img/mpaper/spritesheet.png") no-repeat;
-            background-position: -50px -40px;
+            background: url(../img/mpaper/spriter.png) no-repeat;
+            background-position: -35px -60px;
+            width: 14px;
+            height: 10px;
         }
         
         &:after {
@@ -143,19 +327,17 @@ nav {
         }
 
         &.active {
-            color: #fff;
-            background-color: #0094ae;
+            color: #0867dc;
             
             &:before {
-                background-image: url("../img/mpaper/spritesheet.png");
-                background-position: -75px 0;
+                background-image: url(../img/mpaper/spriter.png);
+                background-position: -21px -60px;
+                width: 14px;
+                height: 10px;
             }
-            &:after {
-                display: none;
-            }
-
             
             & + dd {
+                background-color: #d9f2ff;
                 padding-top: 10px;
                 padding-bottom: 10px;
                 display: block;
@@ -164,11 +346,15 @@ nav {
                 animation: slideDown .5s ease-in-out;
                 animation-fill-mode:forwards;
                 transition: max-height 1s ease-in-out;
-
-                & + dt {
-                    &:after {
-                        display: none;
-                    }
+                
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: 10px;
+                    right: 10px;
+                    top: 0;
+                    height: 1px;
+                    background-color: #ccc;
                 }
             }
         }
@@ -190,8 +376,11 @@ nav {
 }
 
 .link-more {
-    float: right;
-    margin: 0 20px 20px;
+    padding: 40px $padding $padding;
+
+    a:last-child {
+        float: right;
+    }
 }
 
 @keyframes slideDown {

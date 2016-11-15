@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Your title">
+	<meta name="format-detection" content="telephone=no">
+	<title>海棠早班车</title>
+    <link rel="stylesheet" type="text/css" href="./pkgs/swiper/swiper-3.4.0.min.css">
+	<!-- build:css css/mpaper.css -->
+	<link rel="stylesheet" type="text/css" href="./css/mpaper.css">
+    <!-- endbuild -->
+	
+</head>
+<body id="index" v-cloak>
+	<div id='wx_pic' style='margin:0 auto;display:none;'>
+		<img src='./img/mpaper/cover.jpg'>
+	</div>
+	<div class="container">
+		<a href="" class="mpaper-logo"></a>
+
+		<ul class="mpaper-menu">
+			<li v-for="menu in menus | orderBy 'sort'" :class="menu.icon" :id="menu.key">
+				<a href="mpaper-details.html?id={{menu.id}}&title={{menu.label}}">{{ menu.label }}</a>
+			</li>
+		</ul>
+		
+		<div class="mpaper-news">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" v-for="msg in msgs | orderBy 'sort'">
+						<a href="mpaper-details.html?id={{msg.url_id}}&title={{msg.url_title}}">{{ msg.post_title }}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="./pkgs/vue/vue.min.js"></script>
+	<script src="./pkgs/zepto/zepto.min.js"></script>
+	<script src="./pkgs/swiper/swiper-3.4.0.min.js"></script>
+	<!-- build:js js/mpaper.js -->
+	<script src="./js/mpaper.js"></script>
+	<!-- endbuild -->
+</body>
+</html>
