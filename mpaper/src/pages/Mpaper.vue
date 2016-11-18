@@ -77,39 +77,7 @@
 </script>
 
 <style lang="sass">
-	$maxW: 414px;
-	$menusW: 80px;
-	$menusH: $menusW;
-
-	[v-cloak] {
-		display: none;
-	}
-
-	div, ul, a, li, header, h1, img {
-		box-sizing: border-box;
-	}
-
-	a {
-	    outline:none;
-		&:hover, &:active, &:focus, &:visited, &:-webkit-any-link  {
-			color: inherit;
-			text-decoration: none;
-	        outline:none;
-	        -webkit-tap-highlight-color: rgba(0,0,0,0);
-	        -webkit-tap-highlight-color:transparent;
-		} 
-	}
-
-	html, body {
-		margin: 0 auto;
-		font-size: 14px;
-	}
-
-	ul, li {
-		padding-left: 0;
-		margin: 0 auto;
-		list-style: none;
-	}
+	@import "../sass/base", "../sass/mixins", "../sass/var";
 
 	#index {
 		position: absolute;
