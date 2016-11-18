@@ -8,7 +8,6 @@ new Vue({
 	},
 	computed: {
 		ViewComponent () {
-			console.log(routes);
 			const matchingView = routes[this.currentRoute]
 			return matchingView
 				? require('./pages/' + matchingView + '.vue')
